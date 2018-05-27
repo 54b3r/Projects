@@ -1,9 +1,11 @@
 {
 	movieName: "Title 1 ",
 	movieDetails: {
+		rating: "G - X"
+		length: "hh-mm
 		releaseDate: "mm/dd/yyyy",
 		description: "give some movie description here"
-		director: "Director Name",
+		directors: ["Director Name",]
 		mainCast: [ "Actor1", "Actor2","Actor3","Actor4" ],
 		genre: "Genre",
 		imbd_url: "imdburl.com",
@@ -23,6 +25,18 @@ db.customerDB.update({firstName: "Rachel"},{
 	emailAddress: "rbarran15@aol.com", 
 	passwd: "Welcome1"
 });
+DELETE DOCUMENT
+db.customerDB.remove({lastName: "Swanson"});
+FIND SPECIFIC DOCUMENT 
+db.customerDB.find({firstName: "Rachel"});
+FIND TWO DOCUMENTS USING OR OPERATOR
+db.customerDB.find({$or:[{firstName: "Rachel"},{firstName:"Marvin"}]});
+FIND BROAD MATCH FOR MULTIPLE RECORDS
+db.customerDB.find({movieDetails: {
+	rating: "PG-13"
+	}
+});
+
 
 CREATE USER
 db.createUser({
@@ -48,9 +62,45 @@ db.customerDB.insert( {
 	emailAddress: "rbarran15@aol.com"
 } );
 
+db.movies.update({movieName: "Black Panther"},{
+	movieName: "Black Panther",
+	movieDetails: {
+		rating: "PG-13",
+		length: "2h 14min",
+		releaseDate: "02/16/2018",
+		description: "T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsider who was a childhood victim of T'Challa's father's mistake.",
+		director: "Ryan Coogler",
+		mainCast: [ "Chadwick Boseman", "Michael B. Jordan","Lupita Nyong'o" ],
+		fullCast: [],
+		genre: "Action",
+		subGenres: ["Adventure","Sci-Fi"],
+		imbd_url: "https://www.imdb.com/title/tt1825683/"
+		}
+});
+
+Db.customerDB.update({firstName: "Marvin"}, {$inc{age: 45}});
+upsert
+Db.customerDB.update({firstName: "Joe"},{firstName: "Joe", lastName: "Swanson"}, {upsert: true} );
+Db.customerDB.update({firstName: "Joe"},{$rename:{"firstName":"firstNAME"}} );
+
+SEACH A SUB PROPERTY
+db.movies.find({"movieDetails.rating":"PG-13"});
+db.movies.find({"movieDetails.subGenres":"Adventure"});
+SEARCH AN ARRAY(BELOW IS PRESUMING MOVIE DETAILS WAS AN ARRAY, IN MY CASE ITS AN OBJECT THIS IS JUST FOR EXAMPLE)
+db.movies.find({movieDetails:"text"});
+
+SORTING
+SORT by genre in ascending order
+db.movies.find().sort({genre: 1});
+SORT by genre in decending order
+db.movies.find().sort({genre: -1});
+
+
 db.movies.insert({
 	movieName: "Black Panther",
 	movieDetails: {
+		rating: "PG-13",
+		length: "2h 14min",
 		releaseDate: "02/16/2018",
 		description: "T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsider who was a childhood victim of T'Challa's father's mistake.",
 		director: "Ryan Coogler",
@@ -62,3 +112,143 @@ db.movies.insert({
 
 	}
 });
+
+db.movies.insert({
+	movieName: "Avengers: Infinity War",
+	movieDetails: {
+		rating: "PG-13",
+		length: "2h 29min",
+		releaseDate: "04/27/2018",
+		description: "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
+		directors: ["Anthony Russo","Joe Russo"],
+		mainCast: ["Robert Downey Jr.","Chris Hemsworth","Mark Ruffalo"],
+		fullCast: [],
+		genre: "Action",
+		subGenres: ["Adventure","Fantasy"],
+		imbd_url: "https://www.imdb.com/title/tt4154756/?ref_=inth_ov_tt",
+
+	}
+});
+
+db.movies.insert({
+	movieName: "Deadpool 2",
+	movieDetails: {
+		rating: "R",
+		length: "1h 59min",
+		releaseDate: "05/18/2018",
+		description: "Foul-mouthed mutant mercenary Wade Wilson (AKA. Deadpool), brings together a team of fellow mutant rogues to protect a young boy with supernatural abilities from the brutal, time-traveling cyborg, Cable.",
+		directors: ["David Leitch"],
+		mainCast: ["Ryan Reynolds", "Josh Brolin", "Morena Baccarin"],
+		fullCast: [],
+		genre: "Action",
+		subGenres: ["Adventure","Comedy"],
+		imbd_url: "https://www.imdb.com/title/tt5463162/?ref_=inth_ov_tt",
+
+	}
+});
+
+db.movies.insert({
+	movieName: "Solo: A Star Wars Story",
+	movieDetails: {
+		rating: "PG-13",
+		length: "2h 15min",
+		releaseDate: "05/25/2018",
+		description: "During an adventure into a dark criminal underworld, Han Solo meets his future copilot Chewbacca and encounters Lando Calrissian years before joining the Rebellion.",
+		directors: ["Ron Howard"],
+		mainCast: ["Alden Ehrenreich", "Woody Harrelson", "Emilia Clarke"],
+		fullCast: [],
+		genre: "Action",
+		subGenres: ["Adventure","Fantasy"],
+		imbd_url: "https://www.imdb.com/title/tt3778644/?ref_=inth_ov_tt",
+
+	}
+});
+
+db.movies.insert({
+	movieName: "Breaking In",
+	movieDetails: {
+		rating: "PG-13",
+		length: "1h 28min",
+		releaseDate: "05/11/2018",
+		description: "A woman fights to protect her family during a home invasion.",
+		directors: ["James McTeigue"],
+		mainCast: ["Gabrielle Union", "Billy Burke", "Richard Cabral"],
+		fullCast: [],
+		genre: "Action",
+		subGenres: ["Crime","Drama"],
+		imbd_url: "https://www.imdb.com/title/tt7137846/?ref_=inth_ov_tt",
+
+	}
+});
+
+db.movies.insert({
+	movieName: "A Quiet Place",
+	movieDetails: {
+		rating: "PG-13",
+		length: "1h 30min",
+		releaseDate: "04/06/2018",
+		description: "In a post-apocalyptic world, a family is forced to live in silence while hiding from monsters with ultra-sensitive hearing.",
+		directors: ["John Krasinki"],
+		mainCast: ["Emily Blunt", "John Krasinski", "Millicent Simmonds"],
+		fullCast: [],
+		genre: "Drama",
+		subGenres: ["Horror","Sci-Fi"],
+		imbd_url: "https://www.imdb.com/title/tt6644200/?ref_=inth_ov_tt",
+
+	}
+});
+
+db.movies.insert({
+	movieName: "Rampage",
+	movieDetails: {
+		rating: "PG-13",
+		length: "1h 47min",
+		releaseDate: "04/06/2018",
+		description: "When three different animals become infected with a dangerous pathogen, a primatologist and a geneticist team up to stop them from destroying Chicago.",
+		directors: ["Brad Peyton"],
+		mainCast: ["Dwayne Johnson", "Naomie Harris", "Malin Akerman "],
+		fullCast: [],
+		genre: "Action",
+		subGenres: ["Adventure","Sci-Fi"],
+		imbd_url: "https://www.imdb.com/title/tt2231461/?ref_=inth_ov_tt",
+
+	}
+});
+
+db.movies.insert({
+	movieName: "Rampage",
+	movieDetails: {
+		rating: "PG-13",
+		length: "1h 47min",
+		releaseDate: "04/06/2018",
+		description: "When three different animals become infected with a dangerous pathogen, a primatologist and a geneticist team up to stop them from destroying Chicago.",
+		directors: ["Brad Peyton"],
+		mainCast: ["Dwayne Johnson", "Naomie Harris", "Malin Akerman "],
+		fullCast: [],
+		genre: "Action",
+		subGenres: ["Adventure","Sci-Fi"],
+		imbd_url: "https://www.imdb.com/title/tt2231461/?ref_=inth_ov_tt",
+
+	}
+});
+
+
+on node side of things
+db.movies.insert({
+	movieName: {type: String, required: true }
+	movieDetails: {
+		rating: String,
+		length: String,
+		releaseDate: Date,
+		description: String,
+		directors: [String]
+		mainCast: [String],
+		fullCast: [String],
+		genre: {type: String, required:true},
+		subGenres: [String],
+		imbd_url: String,
+
+	}
+});
+
+
