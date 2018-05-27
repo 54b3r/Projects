@@ -10,18 +10,19 @@ var genreSchema = new Schema({
     create_date: {
         type: Date,
         default: Date.now
-    }
-},);
-const db1 = mongoose.connection;
-const Genre = module.exports = db1.model('Genre', genreSchema);
+    },
+}, {collection: 'genres'});
 
+const Genre = module.exports = mongoose.model('Genre', genreSchema);{
+    function getGenres() {Genre.getGenres((callback, limit) => {
+        Genre.find(callback).limit(limit);  
+    }); 
+    function getGenreById() { Genre.getGenreById((id, callback) => {
+        Genre.findById(id, callback);
+    })};
+    function addGenre() { Genre.addGenre((genre, callback) => {
+        Genre.create(genre, callback);
+    })};    
+}};
 
-function getGenres(callback, limit) {
-    Genre.find(callback).limit(limit); {
-    }
-}; 
-
-module.exports.getGenres = function getGenres(callback, limit) {
-    Genre.find(callback).limit(limit); {
-    }
-}; 
+module.exports = Genre;

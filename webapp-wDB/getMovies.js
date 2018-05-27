@@ -5,8 +5,8 @@ class GetMovies {
         const mongoose = require('mongoose');
         const Schema = mongoose.Schema;
 
-        const db1 = mongoose.connect('mongodb://127.0.0.1:27017/vidly-app')
-//        const db1 = mongoose.connection
+        const db = mongoose.connect('mongodb://127.0.0.1:27017/vidly-app')
+        const db1 = mongoose.connection
 
         db1.on('error', console.error.bind(console, 'Conncection error:...'));
         db1.once('open', () => {
@@ -37,7 +37,7 @@ class GetMovies {
         db1.on('close', () => {
             console.log("Sonnection is being terminated:...");
         });
-        db1.close();
+        
     }
 }
 

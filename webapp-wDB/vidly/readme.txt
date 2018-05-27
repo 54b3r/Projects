@@ -3,3 +3,14 @@ into app.js: for the main app connection and server configuration
 express.js to handle all of our http requests
 and a db.js to handle all of the querying and CRUD operations 
 
+"movieName": "",
+"rating": "",
+"length": "",
+"releaseDate": "",
+"description": "",
+"directors": [""],
+"mainCast": [{type: String, required: true}],
+"fullCast": [String],
+"genre": {type: String, required:true},
+"subGenres": [String],
+"imbd_url": String,

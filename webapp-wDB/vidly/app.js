@@ -1,9 +1,9 @@
 const Joi = require('joi');
 const express = require('express');
 const bodyParser = require('body-parser');
-const getGenre = require('./models/genre');
-const Movies = require('./getMovies');
-
+const Genres = require('./models/test2');
+const Movies = require('./models/test');
+//const Test = require('./models/test');
 
 const app = express();
 app.use(express.json());
@@ -15,21 +15,21 @@ app.get('/', (req, res) => {
 
 // below is original code i had
 app.get('/api/genres', (req, res) => {
-    getGenre.find((err, genre) => {
-        if(err) return res.status(400).send(err);
-        res.json(genre)
-        res.end;
+    getGenre((err, genre) => {
+        if(err) {
+            throw err;
+        }
+        return res.json(genre);
     })
 
 });
 //new route
 app.get('/api/genrestst', (req, res) => {  
-    
     getGenre((err, genre) =>{
         if(err) {
             throw err;
         }
-        res.send(JSON.stringify(genre))
+        res.json(genre);
     
     })
 });
@@ -37,11 +37,15 @@ app.get('/api/genrestst', (req, res) => {
 const movies = new Movies();
 
 app.get('/api/movies', (req, res) => {   
-    var result = movies.getMovies();
-    console.log(result);
-    res.json(result);
-
+    movies.getMovies();
+    console.log(movies.getMovies());
+    res.send(JSON.stringify(movies.getMovies));
 });
+app.get('/api/movies2', (req, res) => {
+        const result = getMoviesQuery()
+        res.send(result);
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {console.log(`Listening on server port:${port}`)})
 
