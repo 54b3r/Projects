@@ -1,0 +1,64 @@
+{
+	movieName: "Title 1 ",
+	movieDetails: {
+		releaseDate: "mm/dd/yyyy",
+		description: "give some movie description here"
+		director: "Director Name",
+		mainCast: [ "Actor1", "Actor2","Actor3","Actor4" ],
+		genre: "Genre",
+		imbd_url: "imdburl.com",
+		
+		
+	}
+}
+
+db.customerDB.update({firstName: "Marvin"},{$set: {region: "North-East USA"} });
+
+
+db.customerDB.update({firstName: "Marvin Matos"},{firstName: "Marvin", lastName: "Matos", emailAddress: "mmatos@netwireps.com", passwd: "Welcome1"} );
+
+db.customerDB.update({firstName: "Rachel"},{
+	firstName: "Rachel",
+	lastName: "Barran",
+	emailAddress: "rbarran15@aol.com", 
+	passwd: "Welcome1"
+});
+
+CREATE USER
+db.createUser({
+	user: "Marvin Matos",
+	pwd: "Welcome1",
+	roles: [ "readWrite", "dbAdmin"]
+});
+CREATE DOCUMENTS IN DIFF DB COLLECTIONS
+db.genres.insert({
+	genre: "Action"
+});
+
+db.customerDB.insert( {
+	firstName: "Marvin Matos",
+	lastName: "Matos",
+	emailAddress: "mmatos@netwireps.com",
+	passwd: "Welcome1",
+} );
+
+db.customerDB.insert( {
+	firstName: "Rachel",
+	lastName: "Barran",
+	emailAddress: "rbarran15@aol.com"
+} );
+
+db.movies.insert({
+	movieName: "Black Panther",
+	movieDetails: {
+		releaseDate: "02/16/2018",
+		description: "T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsider who was a childhood victim of T'Challa's father's mistake.",
+		director: "Ryan Coogler",
+		mainCast: [ "Chadwick Boseman", "Michael B. Jordan","Lupita Nyong'o" ],
+		fullCast: [],
+		genre: "Action",
+		subGenres: ["Adventure","Sci-Fi"],
+		imbd_url: "https://www.imdb.com/title/tt1825683/"
+
+	}
+});

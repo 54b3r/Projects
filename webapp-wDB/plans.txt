@@ -1,0 +1,4 @@
+Here ill list some of my plans for this project (Vidly with mongoDB database)
+well need a main collection (vidly-app) and break that off into groups
+so that we have an object with title,releaseYear,director, mainCast, genre,imdb_url
+have a place where you can subscribe to different genres and get the latest uploads
