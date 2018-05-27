@@ -2,7 +2,7 @@ const Joi = require('joi');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const getGenres = require('./getGenres');
+const getGenres = require('./GetGenres');
 
 const app = express();
 app.use(express.json());

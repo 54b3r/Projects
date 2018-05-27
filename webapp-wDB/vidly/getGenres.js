@@ -1,7 +1,7 @@
-class GetGenres extends mongoose{
+class GetGenres {
     getGenres() {
-        const mongoose = require('mongoose')
-            , Schema = mongoose.Schema;
+        const mongoose = require('mongoose');
+        const Schema = mongoose.Schema;
 
         mongoose.connect('mongodb://127.0.0.1:27017/vidly-app')
         const db1 = mongoose.connection;
