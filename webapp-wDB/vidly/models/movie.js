@@ -18,14 +18,35 @@ var movieSchema = new Schema({
 
 const Movies = module.exports = mongoose.model('Movies', movieSchema);{
 
-    function getMovies() {Genre.getMovies((callback, limit) => {
+    function getMovies() {Movies.getMovies((callback, limit) => {
         Movies.find(callback).limit(limit);   
     });
-    function getMovieById() {Genre.getMovieById((id, callback) => {
+    function getMovieById() {Movies.getMovieById((id, callback) => {
         Movies.findById(id, callback);
     })};
-    function addBook() { Genre.addBook((book, callback) => {
-        Genre.create(book, callback);
+    function addMovie() { Movies.addMovie((movie, callback) => {
+        Movies.create(movie, callback);
+    })};
+    function updateMovie() {Movies.updateMovie((_id, movie, options) => {
+        var query = {_id: _id};
+        var update = {
+            movieName: Movies.movieName,
+            rating: Movies.rating,
+            length: Movies.length,
+            releaseDate: Movies.releaseDate,
+            description: Movies.description,
+            directors: Movies.directors,
+            mainCast: Movies.mainCast,
+            fullCast: Movies.fullCast,
+            genre: Movies.genre,
+            subGenres: Movies.subGenres,
+            imbd_url: Movies.imbd_url,
+        }
+        Movies.findOneAndUpdate(query,update, options, callback);
+    })}; 
+    function deleteMovie() { Genre.deleteMovie((id, callback) => {
+        var query = {_id: _id};
+        Movies.remove(query, callback);
     })}; 
 }}
 

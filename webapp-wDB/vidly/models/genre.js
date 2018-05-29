@@ -22,7 +22,18 @@ const Genre = module.exports = mongoose.model('Genre', genreSchema);{
     })};
     function addGenre() { Genre.addGenre((genre, callback) => {
         Genre.create(genre, callback);
-    })};    
+    })};
+    function updateGenre() {Genre.updateGenre((_id, genre, options, callback) => {
+        var query = {_id: _id};
+        var update = {
+            genre: Genre.genre,
+        } 
+        Genre.findOneAndUpdate(query,update, options, callback); 
+    })};  
+    function deleteGenre() { Genre.deleteGenre((id, callback) => {
+        var query = {_id: _id};
+        Genre.remove(query, callback);
+    })};   
 }};
 
 module.exports = Genre;

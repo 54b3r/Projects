@@ -42,7 +42,28 @@ app.post('/api/genres', (req, res) => {
         if(err) {
             throw err;
         }
-        res.send(JSON.stringify(genre));
+        res.json(genre);
+    })
+});
+
+app.put('/api/genres/:_id', (req, res) => {
+    var id = req.params._id;
+    var genre = req.body;
+    Genre.findOneAndUpdate(id, genre, {}, (err, genre) => {
+        if(err) {
+            throw err;
+        }
+        res.json(genre);
+    })
+});
+
+app.delete('/api/genres/:_id', (req, res) => {
+    var id = req.params._id;
+    Genre.remove(id, (err, genre) => {
+        if(err) {
+            throw err;
+        }
+        res.json(genre);
     })
 });
 
@@ -71,6 +92,27 @@ app.post('/api/movies', (req, res) => {
             throw err;
         }
         res.send(JSON.stringify(movie));
+    })
+});
+
+app.put('/api/movies/:_id', (req, res) => {
+    var id = req.params._id;
+    var movie = req.body;
+    Movies.findOneAndUpdate(id, movie, {}, (err, movie) => {
+        if(err) {
+            throw err;
+        }
+        res.json(movie);
+    })
+});
+
+app.delete('/api/movies/:_id', (req, res) => {
+    var id = req.params._id;
+    Movies.remove(id, (err, movie) => {
+        if(err) {
+            throw err;
+        }
+        res.json(movie);
     })
 });
 
