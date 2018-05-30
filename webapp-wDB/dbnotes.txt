@@ -62,7 +62,22 @@ db.customerDB.insert( {
 	emailAddress: "rbarran15@aol.com"
 } );
 
-db.movies.update({movieName: "Black Panther"},{
+db.customerDB.insert( {
+	firstName: "Joe",
+	lastName: "Shmoe",
+	emailAddress: "jsmone@host.localhost"
+} );
+db.customerDB.insert( {
+	firstName: "Tom",
+	lastName: "Riddle",
+	emailAddress: "jsmone@host.localhost"
+} );
+db.customerDB.insert( {
+	firstName: "Klark",
+	lastName: "Kent",
+	emailAddress: "jsmone@host.localhost"
+} );
+db.movies.insert({movieName: "Black Panther"},{
 	movieName: "Black Panther",
 	movieDetails: {
 		rating: "PG-13",
