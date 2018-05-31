@@ -4,23 +4,23 @@ myApp.config(($routeProvider, $controllerProvider) => {
     $controllerProvider.register('MoviesController')
     $routeProvider.when('/', {
         controller: 'MoviesController',
-        templateUrl: 'views/movies.html',
+        template: 'views/movies.html',
     })
-     .when('/movies', {
+     .when('movies', {
         controller: 'MoviesController',
-        templateUrl: 'views/movies.html',
+        template: 'views/movies.html',
     })
     .when('/movies/details/:_id', {
         controller: 'MoviesController',
-        templateUrl: 'views/movie_details.html',
+        template: 'views/movie_details.html',
     })
     .when('/movies/add', {
         controller: 'MoviesController',
-        templateUrl: 'views/add_movie.html',
+        template: 'views/add_movie.html',
     })
     .when('/movies/edit/:_id', {
         controller: 'MoviesController',
-        templateUrl: 'views/edit_movie.html',
+        template: 'views/edit_movie.html',
     })
     .otherwise({
         redirectTo: '/'
