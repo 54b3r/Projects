@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 app.use(express.json());
-app.use(express.static('/client'));
+app.use(express.static(__dirname+'/client'));
 
 mongoose.connect('mongodb://127.0.0.1:27017/vidly-app')
 const db = mongoose.connection;
