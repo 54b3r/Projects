@@ -14,7 +14,6 @@ const Requests = require('./models/requests');
 app.get('/', (req, res) => {
     res.json('You have reached the root of this WebServer.')
 });
-
 app.get('/api/prices', (req, res) => {
     Prices.find((err, prices) => {
         if(err) {
@@ -23,7 +22,6 @@ app.get('/api/prices', (req, res) => {
         res.json(prices);
     });
 })
-
 app.get('/api/prices/:id', (req, res) => {
     const _id = req.param._id
     Prices.findById(_id, (err, price) => {
@@ -42,7 +40,6 @@ app.post('/api/prices', (req, res) => {
         res.json(newPrice);
     })
 });
-
 app.put('/api/prices/:_id', (req, res) => {
     var _id = req.params._id;
     var update = {
