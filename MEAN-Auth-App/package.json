@@ -12,10 +12,10 @@
     "mongoose": "*",
     "bcryptjs": "*",
     "cors": "*",
-    "jsonwebtoken": "**",
+    "jsonwebtoken": "*",
     "body-parser": "*",
-    "passport":"*",
-    "passport-jwt": "*" 
+    "passport": "*",
+    "passport-jwt": "*"
   },
   "author": "Marvin Matos",
   "license": "ISC"
