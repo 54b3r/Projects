@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
+app.use(express.json());
 
 mongoose.connect('mongodb://127.0.0.1:27017/vidly-app');
 const db = mongoose.connection;
@@ -32,6 +33,12 @@ app.get('/', () => {
     console.log('This is the root of your: localhost webserver');
 });
 app.get('/api/genres', (req, res) => {
+    const genre = {
+        genre: req.body.genre
+    };
+    
+    const { error } = Joi.validate(genre);
+    if (error) return res.status(400).send(error.details[0].message);
     
     
     const genre = req.param.genre

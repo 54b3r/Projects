@@ -7,12 +7,14 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Conncection error:...'));
 db.once('open', () => {
     console.log('Connection has been sucessfull...');
-    //Define the schema we will use 
-    const BookSchema = mongoose.Schema({
-        name: String,
-        price: Number,
-        quantity: Number,
-    }, { collection: 'mainDB'});
+    //const BookSchema = mongoose.Schema({
+//    name: String,
+//    price: Number,
+//    quantity: Number,
+//}, { collection: 'mainDB'});
+    const GenreSchema = new Schema({
+        genre: String,
+    }, { collection: 'genres'});
 
     //now that we have a schema we compaile it to a modle
     const Book = mongoose.model('Book', BookSchema,);
@@ -39,4 +41,9 @@ db.once('open', () => {
 //    db.close();
 //});
 
+//const BookSchema = mongoose.Schema({
+//    name: String,
+//    price: Number,
+//    quantity: Number,
+//}, { collection: 'mainDB'});
 
