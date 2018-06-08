@@ -17,7 +17,8 @@ mongoose.connection.on('error', (err) => {
     console.log(`Database Error: ${err}`);
 });
 const app = express();
-const users = require('./routes/users');
+const Users = require('./routes/users');
+
 //CORS middleware
 app.use(cors());
 
@@ -27,8 +28,13 @@ app.use(express.static(path.join(__dirname, 'client')));
 //Body Parser Middleware
 app.use(bodyParsder.json())
 
+//Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
 //says anything passes to /users/xxx endpoint will go 2 that users file
-app.use('/users', users);
+app.use('/users', Users);
 
 const port = process.env.PORT || 3000
 

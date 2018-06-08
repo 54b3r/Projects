@@ -24,12 +24,12 @@ const userSchema = mongoose.Schema({
 const User = module.exports = mongoose.model('User', userSchema);
 
 //how to use a function outside of this module
-module.exports.getUserbyId = function(_id, callback) {
-    User.findById(callback);
+module.exports.getUserById = function(_id, callback) {
+    User.findById(_id, callback);
 }
-module.exports.getUserbyUsername = function(username, callback) {
+module.exports.getUserByUsername = function (username, callback) {
     const query = {username: username}
-    User.findOne(query);
+    User.findOne(query, callback);
 }
 //function to add a user, while encrypting the password field (good for storing the data)
 module.exports.addUser = function(newUser, callback) {
@@ -42,5 +42,11 @@ module.exports.addUser = function(newUser, callback) {
             newUser.password = hash
             newUser.save(callback);
         })
+    });
+}
+module.exports.comparePassword = function (candidatePassword, hash, callback) {
+    bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+        if(err) throw err;
+        callback(null, isMatch);
     });
 }
