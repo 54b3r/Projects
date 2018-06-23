@@ -21,6 +21,9 @@ const Users = require('./routes/users');
 
 //CORS middleware
 app.use(cors());
+//add CORS OPTIONS
+//app.options('*', cors())
+
 
 //set the static folder for our angular 2 app
 app.use(express.static(path.join(__dirname, 'client')));
@@ -34,7 +37,11 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 //says anything passes to /users/xxx endpoint will go 2 that users file
-app.use('/users', Users);
+app.use('/users', Users, (req, res, next) => {
+    res.append('Access-Control-Allow-Origin','*');
+    res.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    next();
+});
 
 const port = process.env.PORT || 3000
 

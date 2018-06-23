@@ -1,3 +1,126 @@
-<p>
-  navbar works!
-</p>
+
+<nav class="navbar navbar-inverse navbar-expand-md navbar-dark bg-secondary fixed-top">
+  <div class="mx-auto order-0 text-center ">
+    <a href="#">
+      <img id="logo-navbar-middle" class="d-inline-block " src="assets/logo.png" alt="Logo" width="30" >     
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="navbar-expand-md  text-center collapse navbar-collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"  [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row order-0 navbar-brand">
+      <a class="nav-link row" width="200px" href="#">Netwire Auth App</a>
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}" [routerLink]="['register']">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}" [routerLink]="['login']">Login</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" (click)="onLogoutClick()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--
+  // this is a search bar for a navigation bar
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+<nav class="nav navbar navbar-default navbar-expand-md navbar-dark bg-primary fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#authapp-toggle-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Authapp.io</a>
+      </div>
+
+
+
+      <li class="navbar-link" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/']">HOME </a></li>
+      <li class="navbar-link" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['register']"><span class="glyphicon glyphicon-user"></span>SIGN UP</a></li>
+      <li class="navbar-link" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="'login'"><span class="glyphicon glyphicon-log-in"></span>LOGIN</a></li>
+  </div>
+    
+  <div class="collapse navbar-collapse" id="authapp-toggle-nav">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Sign Up</a></li>
+      <li><a href="#">Sign In</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Start Learning</a></li>
+          <li><a href="#">View All Courses</a></li>
+          <li><a href="#">PlaceHolder Field</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>   
+</nav>
+-->
+
+
+
+
+<!--
+<nav class="nav navbar navbar-default navbar-expand-md navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>  
+    <div>
+      <ul id="mainNav" class="nav navbar-nav">
+        <li><a href="#">AuthApp.com   </a></li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/']">Home </a></li>
+        <li><a href="#"> Test </a></li>
+        <li><a href="#"> Test2</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <ul class="nav navbar-right">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['register']"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['login']"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
+      </ul>
+    </div>
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+  </form> 
+    -->
