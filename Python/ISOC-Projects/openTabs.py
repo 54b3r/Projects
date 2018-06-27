@@ -10,11 +10,17 @@ ibmv5000_URL = "https://10.170.82.207/login"
 ibmHMC_URLRedirect = "https://10.170.176.18/hmc/connect"
 
 #Creating a list of urls
-urlsToOpen = {
+generalURLsToOpen = [
 
-}
+]
+
+as400URLsToOpen = [
+
+]
 print("Now opening the General ISOC Web Browser Tabs\nPlease wait...")
 webbrowser.open_new(caServiceDeskURL)
 webbrowser.open_new_tab(caSpectrumURL)
 webbrowser.open_new_tab(isocSharepointURL)
 webbrowser.open_new_tab(ibmv5000_URL)  
+#TODO: Add more robust way of opening URLs
+#TODO#2: add url groups to help open easier
