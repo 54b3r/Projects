@@ -8,7 +8,7 @@ Opens a browser tab for each result.
 
 This means your code will need to do the following:
 
-Read the command line arguments from sys.argv.
+    Read the command line arguments from sys.argv.
 
 Fetch the search result page with the requests module.
 
