@@ -7,3 +7,7 @@ url = 'http://sykpcasd12ap1v:80/CAisd/pdmweb.exe'
 full_url = url + '?' + payload
 response = urllib2.urlopen(full_url)
 webbrowser.open(full_url)
+
+def saveResponseToDisk():
+    with open("results.html", "w") as f:
+        f.write(response.read())
