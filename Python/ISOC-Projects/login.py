@@ -1,11 +1,10 @@
-import lxml.html
-import urllib, urllib2, webbrowser, requests
+import urllib, urllib2, webbrowser, requests, getpass
 
-#TODO: Add User-input to avoid hardcoding UN/PW
+
 print("Now Opening and Loggin into CA Servicedesk")
-
+#User-input to avoid hardcoding UN/PW
 un=raw_input("Please enter the desired Username to login with: ")
-pin=raw_input("Please enter the desired password to login with: ")
+pin=getpass.getpass("Please enter the desired password to login with: ")
 
 
 payload = urllib.urlencode({'USERNAME': un, 'PIN': pin})
